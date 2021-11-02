@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import Counter from './counter/counter'
 
 export default function App() {
 
@@ -18,10 +18,13 @@ export default function App() {
 
       {/* Transforming - Array of String to Array of JSX */}
 
-      {users.map(value =>
-        <Msg name={value.name} pic={value.pic} />)}
 
+      {/* Working with array of obj 01-11-2021*/}
+      {/* {users.map(value =>
+        <Msg name={value.name} pic={value.pic} />)} */}
 
+      {/* Counter 02-11-2021 */}
+      <Counter />
 
     </div>
   );
