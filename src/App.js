@@ -1,31 +1,40 @@
-import './App.css';
-import Counter from './counter/counter'
+import "./App.css";
+import { Counter } from "./counter/counter";
+// import { Msg } from './Msg/Msg';
+import { Switch, Link, Route, Redirect } from "react-router-dom";
+import { ColorBox } from "./colorBox/ColorBox";
+
+
 
 export default function App() {
-
-  const users = [
-    { name: "DK", pic: "https://cdn.onlinewebfonts.com/svg/img_24787.png" },
-    { name: "Got it", pic: "https://i.etsystatic.com/15971018/r/il/14c008/1957171418/il_794xN.1957171418_r3wl.jpg" }
-  ]
   return (
     <div className="App">
-      <h1>Hello React.</h1>
-
-      {/* passing value to the props */}
-
-      {/* <Msg name="Got It" />
-      <Msg name="DK" /> */}
-
-      {/* Transforming - Array of String to Array of JSX */}
-
-
-      {/* Working with array of obj 01-11-2021*/}
-      {/* {users.map(value =>
-        <Msg name={value.name} pic={value.pic} />)} */}
+      {/* <Msg /> */}
 
       {/* Counter 02-11-2021 */}
-      <Counter />
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/counters">Counter</Link>
+        <Link to="/color-box">Color</Link>
+      </nav>
 
+      <Switch>
+        <Route exact path="/">
+          Welcome🏘️
+        </Route>
+        <Route path="/counter">
+          <Redirect to="/counters" />
+        </Route>
+        <Route path="/counters">
+          <Counter />
+        </Route>
+        <Route path="/color-box">
+          <ColorBox />
+        </Route>
+        <Route path="**">
+          Not Found 404
+        </Route>
+      </Switch>
     </div>
   );
 }
@@ -33,18 +42,6 @@ export default function App() {
 // Creating Components
 // First Letter Caps
 // return JSX
-
-function Msg({ name, pic }) {
-  // let name = "DK";
-  console.log({ name });
-
-  return (
-    <div>
-      <img className="user-pic" src={pic} />
-      <h2 className="user-msg">Lets Start - {name}</h2>
-    </div>
-  );
-}
 
 //App - component can created by
 //1. function component
